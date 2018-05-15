@@ -33,18 +33,18 @@ app.listen(PORT, function() {
 Blockchain Test below
 ========================================================== */
 
-let jsChain =  new Blockchain;
+let jsChain =  new Blockchain; // creates new chain
 
 console.log('\nCreating some transactions.....');
 
-let testTrans = new Transaction('address1', 'address2', 100);
+let testTrans = new Transaction('address1', 'address2', 100);  // creates some sample transactions
 let anotherTrans = new Transaction('address2', 'address1', 50);
 
 jsChain.createTransaction(testTrans);
 jsChain.createTransaction(anotherTrans);
 
 console.log('Starting miner...');
-jsChain.minePendingTransactions("my-address");
+jsChain.minePendingTransactions("my-address");     //creates a new block and adds the transaction data to it
 
 console.log('balance of my address is ', jsChain.getBalanceOfAddress("my-address"),"\n");
 
