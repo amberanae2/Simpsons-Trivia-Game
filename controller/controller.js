@@ -3,10 +3,10 @@ let router = express.Router();
 let models = require("../models/chain.js");
 
 router.get("/", (req, res) => {
-    res.redirect("/hangman");
+    res.redirect("/simpsons");
 });
 
-router.get("/hangman", (req, res) => {
+router.get("/simpsons", (req, res) => {
 
     res.render("index", {});
 });
