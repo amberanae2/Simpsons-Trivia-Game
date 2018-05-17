@@ -9,6 +9,7 @@ CREATE TABLE Characters (
   voice_actor VARCHAR(150) NULL,
   episode VARCHAR(100) NULL,
   air_date DATE NULL,
+  image VARCHAR(100) NULL,
   PRIMARY KEY (id)
 );
 
