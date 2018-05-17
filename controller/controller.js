@@ -11,4 +11,5 @@ router.get("/simpsons", (req, res) => {
     res.render("index", {});
 });
 
+
 module.exports = router;
