@@ -3,7 +3,9 @@ const bodyParser = require("body-parser");
 
 const SHA256 = require("crypto-js/sha256");
 const Blockchain = require("./models/chain.js");
-const Transaction = require("./models");
+const Transaction = require("./models/transaction.js");
+const User = require("./models/user.js");
+
 
 let PORT = process.env.PORT || 8080;
 let app = express();
@@ -52,3 +54,12 @@ console.log('Starting miner again...');
 jsChain.minePendingTransactions("my-address");
 
 console.log('balance of my address is ', jsChain.getBalanceOfAddress("my-address"));
+console.log("\n");
+
+
+let newUser = new User("Gian", "Gian",12);
+
+console.log("test password hash ",newUser._password);
+newUser._password = "AARON";
+console.log("test NEW password hash ",newUser._password);
+console.log(newUser.getpassword);
