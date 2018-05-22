@@ -4,11 +4,8 @@ const bodyParser = require("body-parser");
 const SHA256 = require("crypto-js/sha256");
 const Blockchain = require("./models/chain.js");
 const Transaction = require("./models/transaction.js");
-<<<<<<< HEAD
-=======
 const User = require("./models/user.js");
 
->>>>>>> 02716fb7050f70b363a56e0d6c5101c6fcc36c34
 
 let PORT = process.env.PORT || 8080;
 let app = express();
