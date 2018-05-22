@@ -6,4 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     });
     return User;
   };
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 02716fb7050f70b363a56e0d6c5101c6fcc36c34
