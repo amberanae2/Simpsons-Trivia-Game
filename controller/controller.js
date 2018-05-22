@@ -37,27 +37,7 @@ app.get("/", function(req, res) {
             res.redirect("/");
           });
       });
-////// passsport .js is used here. **see notes below on this. 
-      passport.use(new LocalStrategy(
-        function(username, password, done) {
-          User.findOne({ username: username }, function(err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-              return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-          });
-        }
-      ));
-      app.post('trivia',
-      
-    passport.authenticate('local', { successRedirect: 'trivia',
-                                   failureRedirect: '/',
-                                   failureFlash: true })
-);
+
 
       //// how to use the put route to update the users donutcoins
       app.put(function(req, res, next) {
