@@ -16,7 +16,7 @@ app.get("/", function(req, res) {
       res.render("testIndex");
     });
   ///// route login once user is authenticated 
-    app.get('/simpsonsTriviaLogin', function(req, res) {
+    app.get('/testtrivia', function(req, res) {
         res.send('trivia');
     });
     function isAuthenticated(req, res, next) {
@@ -38,26 +38,26 @@ app.get("/", function(req, res) {
           });
       });
 ////// passsport .js is used here. **see notes below on this. 
-      passport.use(new LocalStrategy(
-        function(username, password, done) {
-          User.findOne({ username: username }, function(err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-              return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-          });
-        }
-      ));
-      app.post('trivia',
+//      passport.use(new LocalStrategy(
+ //       function(username, password, done) {
+//          User.findOne({ username: username }, function(err, user) {
+//            if (err) { return done(err); }
+ //           if (!user) {
+ //             return done(null, false, { message: 'Incorrect username.' });
+ //           }
+ //           if (!user.validPassword(password)) {
+ //             return done(null, false, { message: 'Incorrect password.' });
+ //          }
+  //          return done(null, user);
+  //        });
+  //      }
+  //    ));
+  //    app.post('trivia',
       
-    passport.authenticate('local', { successRedirect: 'trivia',
-                                   failureRedirect: '/',
-                                   failureFlash: true })
-);
+//    passport.authenticate('local', { successRedirect: 'trivia',
+//                                   failureRedirect: '/',
+//                                   failureFlash: true })
+//);
 
       //// how to use the put route to update the users donutcoins
       app.put(function(req, res, next) {

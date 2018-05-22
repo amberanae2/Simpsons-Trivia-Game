@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 
 const SHA256 = require("crypto-js/sha256");
 const Blockchain = require("./models/chain.js");
-const Transaction = require("./models");
+const Transaction = require("./models/transaction.js");
 
 let PORT = process.env.PORT || 8080;
 let app = express();
