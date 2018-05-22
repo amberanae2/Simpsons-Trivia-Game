@@ -1,23 +1,27 @@
 let express = require("express");
 let router = express.Router();
-let models = require("../models/chain.js");      
-var user = require("../models/user.js")
-
-/// for testing purposes use the testHtml
-
-//// need to route to testHtml
+let models = require("../models/chain.js");
+var user = require("../models/user.js");
+// var passport = require("passport"),
+//   LocalStrategy = require("passport-local").Strategy;
 
 router.get("/", function(req, res) {
-    res.redirect("/simpsonTriviaLogin"); //this redirects us to the route below.
-   });
+  res.redirect("/testIndex"); //this redirects us to the route below(the root)
+});
 
-   
-   router.get("/simpsonTriviaLogin", function(req, res) {
-    // express callback response by calling burger.selectAllBurger
-   //SEQUELIZE code to pull data from database using the information gathered from the login page.
-      // wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
-      res.render("trivia", { game_data: gameData }); 
-   // game data is a variable I made up. It’s being used in the imaginary Sequelize code. 
-    });
-   
-   
+router.get("/testIndex", function(req, res){
+  res.render("index");
+});
+
+router.get("/TriviaGame", function(req, res) {
+  res.render("trivia");
+});
+
+//// how to use the put route to update the users donutcoins
+router.put(function(req, res, next) {
+  req.donutCoins = req.params.donutCoins;
+  res.json(req.donutCoins);
+});
+
+module.exports = router;
+

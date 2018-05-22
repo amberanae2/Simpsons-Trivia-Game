@@ -1,4 +1,7 @@
 var mysql = require("mysql");
+var Sequelize = require("sequelize");
+
+//// sequelize may need to be added keep getting error
 
 var connection = mysql.createConnection({
   port: 8080,
