@@ -1,5 +1,3 @@
-const router = require("../../controller/controller.js");
-
 let guessLeft = 5;
 let gamesLeft = 10;
 let currentCharacter = "homer";
@@ -16,10 +14,11 @@ function scoreKeeper(guessLeft) {
   console.log("points scored ",points);
 }
 
-userGrabber();
+
+// userGrabber();
     //tries to authenticate and grabs user
 
-    characterRandomizer();
+    // characterRandomizer();
     // gets character randomizer aafter authentication
 
 //gameEnder()
