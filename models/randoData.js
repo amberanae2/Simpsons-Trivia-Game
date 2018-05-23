@@ -2,7 +2,7 @@ var mysql = require("mysql");
 //var Sequelize = require("sequelize");
 
 var connection = mysql.createConnection({
-    port: 3306,
+    port: 8080,
     host: "localhost",
     user: "root",
     password: "",
