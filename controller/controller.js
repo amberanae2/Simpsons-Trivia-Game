@@ -8,15 +8,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/index", (req, res) => {
-  const queryString = `SELECT * FROM characters`
-  connection.query(queryString, (err, results) => {
-    if (err) throw err;
+ // const queryString = `SELECT * FROM characters`
+  //connection.query(queryString, (err, results) => {
+   // if (err) throw err;
     // console.log(res)
     // const hbsObj = {
     //   character: 
     // }
     res.render("index");
-  });
+//  });
 });
 
 router.get("/TriviaGame", (req, res) => {
