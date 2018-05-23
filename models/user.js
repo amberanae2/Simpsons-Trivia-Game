@@ -4,10 +4,12 @@ var connect =  function(cb) {
     connection.query("SELECT * FROM characters", (err, results) => {
       if (err) throw err;
       
-      connection.end();
+     
       console.log("inqeurry");
       cb = results;
+      // connection.end();
       return cb;
+
     });
   }
 module.exports = connect;

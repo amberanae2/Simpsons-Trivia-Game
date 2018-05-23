@@ -4,10 +4,10 @@ var Sequelize = require("sequelize");
 //// sequelize may need to be added keep getting error
 
 var connection = mysql.createConnection({
-  port: 8080,
+  port: 3306,
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "simpsonsdb"
 });
 
