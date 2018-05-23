@@ -35,7 +35,7 @@ app.listen(PORT, function() {
 Blockchain Test below
 ========================================================== */
 
- let jsChain =  new Blockchain; // creates new chain
+ //let jsChain =  new Blockchain; // creates new chain
 
 // console.log('\nCreating some transactions.....');
 
