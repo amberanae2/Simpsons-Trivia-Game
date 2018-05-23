@@ -1,7 +1,7 @@
 let express = require("express");
 let router = express.Router();
 let models = require("../models/chain.js");
-const connection = require('../config/connection.js')
+//const connection = require('../config/connection.js')
 
 router.get("/", (req, res) => {
   res.redirect("/index"); //this redirects us to the route below(the root)
