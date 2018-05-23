@@ -1,10 +1,13 @@
-var Character = require("");
-var User = require("");
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+var connection = require("../config/connection.js");
 
-
-sequelize.query('SELECT * FROM characters', { model: characters }).then(characters => {
-
-
-})
+var connect =  function(cb) {
+    connection.query("SELECT * FROM characters", (err, results) => {
+      if (err) throw err;
+      
+      connection.end();
+      console.log("inqeurry");
+      cb = results;
+      return cb;
+    });
+  }
+module.exports = connect;

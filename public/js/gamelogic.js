@@ -1,55 +1,92 @@
+
+
+
 let guessLeft = 5;
-let gamesLeft = 10;
-let currentCharacter = "homer";
+let gamesLeft = 9;
+let characterList = [
+  "homer",
+  "lisa",
+  "marge",
+  "maggie",
+  "bart",
+  "person",
+  "me",
+  "you",
+  "we",
+  "they"
+];
 let blankArray = [];
 let guesslog = [];
-let characterList = [];
-let stats = [];
+let currentScore = 0;
+let currentChar = characterList[gamesLeft];
+let points = 0;
+
+const GUESS = $("#guess-left");
+const CHAR = $("#character-name");
+const DONUT = $("#donut-coin");
+const LETSGUESS = $("#letters-guessed");
 
 //===========================================
+let UserData = {};
+let CharacterData = [];
+
 function scoreKeeper(guessLeft) {
-  let points = 20;
-  points *= guessLeft;
-  stats.push(points);
-  console.log("points scored ",points);
+  let currentPts = 20;
+  currentPts *= guessLeft;
+  points += currentPts;
+  console.log("points scored ", currentPts);
+
+  DONUT.html(points);
+  UserData.DonutCoins += currentPts;
 }
 
+// function userGrabber(){
+//   console.log("im in userGrabber!");
+//   UserData = User;
+//   $("#user-name").html(User.Username);
+// }
 
-// userGrabber();
-    //tries to authenticate and grabs user
 
-    // characterRandomizer();
-    // gets character randomizer aafter authentication
+ function characterRandomizer(){
+   for(let index in Character){
+    CharacterData.push(index);
+   }
+   for(let count = 0; count < 10; count++){
+     characterList.push(CharacterData[Math.floor(Math.random() * CharacterData.length)])
+   }
+ 
+};
+// gets character randomizer aafter authentication
 
-//gameEnder()
+// function gameEnder()
 
 //================================================
-document.getElementById("guess-left").innerHTML = guessLeft;
+GUESS.html(guessLeft);
 
 function blankRevealer(guess, index) {
   blankArray[index] = guess;
-  document.getElementById("character-name").innerHTML = blankArray.join(" ");
+  CHAR.html(blankArray.join(" "));
 }
 
 function guessLogger(guess) {
   guesslog.push(guess);
   console.log(guesslog);
-  element = document.getElementById("letters-guessed");
-  element.innerHTML = guesslog;
+  LETSGUESS.html(guesslog);
 }
 
 function guessChecker(guess) {
-  var testArray = blankArray;
+  let testArray = blankArray;
+
   guessLogger(guess);
 
-  for (i = 0; i < currentCharacter.length; i++) {
-    if (currentCharacter.charAt(i) === guess) {
-      blankRevealer(currentCharacter.charAt(i), i);
+  for (i = 0; i < currentChar.length; i++) {
+    if (currentChar.charAt(i) === guess) {
+      blankRevealer(currentChar.charAt(i), i);
     }
   }
   // check for change
-  for (counter = 0; counter < currentCharacter.length; counter++) {
-    if (currentCharacter.indexOf(guess) === -1) {
+  for (counter = 0; counter < currentChar.length; counter++) {
+    if (currentChar.indexOf(guess) === -1) {
       guessLeft--;
       break;
     }
@@ -57,69 +94,79 @@ function guessChecker(guess) {
 }
 
 function blankBuilder() {
-  for (pusher = 0; pusher < currentCharacter.length; pusher++) {
-    blankArray.push("_");
+  for (pusher = 0; pusher < currentChar.length; pusher++) {
+    blankArray.push("_ ");
   }
   console.log(blankArray);
-  document.getElementById("character-name").innerHTML = blankArray.join(" ");
+  CHAR.html(blankArray.join(" "));
 }
 
 function writeToGuessed(keyPress) {
-  document.getElementById("letters-guessed").innerHTML = keyPress;
+  LETSGUESS.html(keyPress);
   //   guessLeft--;
 }
 
 function reset() {
+  
   if (guessLeft === 0) {
     scoreKeeper(guessLeft);
 
     blankArray = [];
     guesslog = [];
-    guessLeft = 5;
+    guessLeft = 6;
     gamesLeft--;
-    currentCharacter = "lisa";
+    games.html(gamesLeft);
+    currentChar =  characterList[gamesLeft];
     //   secretWord = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log("games left ", gamesLeft);
 
     blankBuilder();
-    document.getElementById("character-name").innerHTML = blankArray;
-    document.getElementById("guess-left").innerHTML =
-      "Loser! Press a key to play again!";
+    CHAR.html(blankArray);
+    GUESS.html("Loser! Press a key to continue!");
   }
   // convert secret word into a comma string.
-  secretWordConvert = currentCharacter;
+  secretWordConvert = currentChar;
   secretWordConvert = secretWordConvert.split("");
   secretWordConvert = secretWordConvert.toString();
 
-  var blankArrayConvert = blankArray;
+  let blankArrayConvert = blankArray;
   blankArrayConvert = blankArrayConvert.toString();
 
   if (blankArrayConvert === secretWordConvert) {
     console.log("victory tries left ", guessLeft);
     scoreKeeper(guessLeft);
 
-    document.getElementById("guess-left").innerHTML =
-      "you win! Press a key to try again!";
+    GUESS.html("you win! Press a key to continue!");
 
     blankArray = [];
     guesslog = [];
-    tryLeft = 5;
+    guessLeft = 5;
     gamesLeft--;
-    currentCharacter = "lisa";
+    
+    currentChar =  characterList[gamesLeft];
+    console.log(currentChar);
+    games.html(gamesLeft);
     // secretWord = wordList[Math.floor(Math.random() * wordList.length)];
-    console.log(currentCharacter);
+    console.log("games left ", gamesLeft);
     blankBuilder();
-    document.getElementById("character-name").innerHTML = blankArray;
+    CHAR.html(blankArray);
   }
 }
 
-//=====================================================================
+//============================= Game Logic Start =============================
+DONUT.html(currentScore);
+let games = $("#games-left");
+games.html(gamesLeft);
+
 blankBuilder();
-document.addEventListener("DOMContentLoaded", () => {
+// userGrabber();
+
+$().ready(() => {
   document.onkeyup = () => {
     let keyPress = String.fromCharCode(event.which).toLowerCase();
     writeToGuessed(keyPress);
     guessChecker(keyPress);
-    document.getElementById("guess-left").innerHTML = guessLeft;
+    GUESS.html(guessLeft);
 
     reset();
   };

@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const SHA256 = require("crypto-js/sha256");
 const Blockchain = require("./models/chain.js");
 const Transaction = require("./models/transaction.js");
-const User = require("./models/user.js");
+// const User = require("./models/user.js");
 
 
 let PORT = process.env.PORT || 8080;
@@ -35,7 +35,7 @@ app.listen(PORT, function() {
 Blockchain Test below
 ========================================================== */
 
-// let jsChain =  new Blockchain; // creates new chain
+ let jsChain =  new Blockchain; // creates new chain
 
 // console.log('\nCreating some transactions.....');
 
