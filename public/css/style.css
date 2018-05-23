@@ -1,0 +1,45 @@
+.text-center {
+    font-family: 'Schoolbell', cursive;
+    font-weight: bold;
+    color: red;
+  }
+
+  .jumbotron {
+    background-image: url();
+    border: 4px solid black;
+  }
+  #guess {
+    font-size: 50px;
+  }
+  #slog {
+    font-size: 30px;
+  }
+  #loginbtn {
+    font-size: 20px;
+  }
+  #signbtn {
+      font-size: 20px;
+  }
+  .modal {
+    font-family: 'Schoolbell', cursive;
+  }
+  #triviapg {
+      background-image: url();
+      background-repeat: no-repeat;
+  }
+  body {
+      background-image: url('../img/cloudbackground.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+
+  .col-4 {
+      font-family: 'Schoolbell', cursive;
+      font-size: 30px;
+      color: red;
+      font-weight: bolder;
+  }
+  img {
+      border: 4px solid black;
+  }
