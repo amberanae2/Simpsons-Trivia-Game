@@ -1,3 +1,6 @@
+
+
+
 let guessLeft = 5;
 let gamesLeft = 9;
 let characterList = [
@@ -24,6 +27,9 @@ const DONUT = $("#donut-coin");
 const LETSGUESS = $("#letters-guessed");
 
 //===========================================
+let UserData = {};
+let CharacterData = [];
+
 function scoreKeeper(guessLeft) {
   let currentPts = 20;
   currentPts *= guessLeft;
@@ -31,15 +37,28 @@ function scoreKeeper(guessLeft) {
   console.log("points scored ", currentPts);
 
   DONUT.html(points);
+  UserData.DonutCoins += currentPts;
 }
 
-// userGrabber();
-//tries to authenticate and grabs user
+// function userGrabber(){
+//   console.log("im in userGrabber!");
+//   UserData = User;
+//   $("#user-name").html(User.Username);
+// }
 
-// characterRandomizer();
+
+ function characterRandomizer(){
+   for(let index in Character){
+    CharacterData.push(index);
+   }
+   for(let count = 0; count < 10; count++){
+     characterList.push(CharacterData[Math.floor(Math.random() * CharacterData.length)])
+   }
+ 
+};
 // gets character randomizer aafter authentication
 
-//gameEnder()
+// function gameEnder()
 
 //================================================
 GUESS.html(guessLeft);
@@ -88,13 +107,13 @@ function writeToGuessed(keyPress) {
 }
 
 function reset() {
-  // let games = document.getElementById("games-left");
+  
   if (guessLeft === 0) {
     scoreKeeper(guessLeft);
 
     blankArray = [];
     guesslog = [];
-    guessLeft = 5;
+    guessLeft = 6;
     gamesLeft--;
     games.html(gamesLeft);
     currentChar =  characterList[gamesLeft];
@@ -121,12 +140,12 @@ function reset() {
 
     blankArray = [];
     guesslog = [];
-    tryLeft = 5;
+    guessLeft = 5;
     gamesLeft--;
     
     currentChar =  characterList[gamesLeft];
     console.log(currentChar);
-    games.html(currentChar);
+    games.html(gamesLeft);
     // secretWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log("games left ", gamesLeft);
     blankBuilder();
@@ -140,6 +159,7 @@ let games = $("#games-left");
 games.html(gamesLeft);
 
 blankBuilder();
+// userGrabber();
 
 $().ready(() => {
   document.onkeyup = () => {
