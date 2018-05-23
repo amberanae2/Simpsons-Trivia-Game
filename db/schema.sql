@@ -1,0 +1,33 @@
+DROP DATABASE IF EXISTS Simpsonsdb;
+CREATE database Simpsonsdb;
+
+USE Simpsonsdb;
+
+CREATE TABLE Characters (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  voice_actor VARCHAR(150) NULL,
+  episode VARCHAR(100) NULL,
+  air_date DATE NULL,
+  image VARCHAR(100) NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Users (
+  UserID INT NOT NULL AUTO_INCREMENT,
+  Username VARCHAR(50) NOT NULL,
+  Password VARCHAR(50) NOT NULL,
+  DonutCoins INT NOT NULL,
+  PRIMARY KEY (UserID)
+);
+
+CREATE TABLE BlockChain (
+  BlockID INT NOT NULL AUTO_INCREMENT,
+  TIMESTAMP TIMESTAMP,
+  Transactions VARCHAR(100) NOT NULL,
+  CurrentHash VARCHAR(100) NOT NULL,
+  PreviousHash VARCHAR(100) NOT NULL,
+  PRIMARY KEY (BlockID)
+);
+
+
